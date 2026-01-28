@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tron 3 Details - 3D Interactive</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    padding: 25px;
+    color: #fff;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+.container:hover {
+    transform: rotateY(8deg) rotateX(4deg) scale(1.03);
+}
+header {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #00ffe0;
+    text-shadow: 0 0 20px #00ffe0, 0 0 40px #0ff;
+}
+.movie-img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    transition: transform 0.5s ease;
+}
+.movie-img:hover {
+    transform: scale(1.05) rotateY(5deg);
+}
+h2 {
+    font-size: 2rem;
+    color: #00ffe0;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #0ff;
+}
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ddd;
+    margin: 10px 0;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.btn {
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    background: linear-gradient(45deg,#00ffcc,#00aaff);
+    box-shadow: 0 10px 30px rgba(0,255,255,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+.btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(0,255,255,0.7);
+}
+.download-btn {
+    background: linear-gradient(45deg,#28ff7f,#20b04b);
+    color: #000;
+}
+.watch-btn {
+    background: linear-gradient(45deg,#ff4c4c,#e04343);
+    color: #000;
+}
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(45deg,#007bff,#0056b3);
+    box-shadow: 0 10px 30px rgba(0,123,255,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(0,123,255,0.7);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header>Tron Ares Details</header>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8XhtoFl5hsNNkhfN37bTNx6_gmWSBA-k3Rgw8awlDYw&s=10" alt="Tron Ares" class="movie-img">
+
+<h2>Tron 3</h2>
+<p><strong>Story:</strong> Tron Ares continues the epic saga of digital adventure and the battle inside the Grid. The protagonist faces new challenges, powerful enemies, and thrilling adventures in a high-tech virtual world.</p>
+<p><strong>Genre:</strong> Sci-Fi, Action</p>
+<p><strong>Release Date:</strong> 2025</p>
+
+<div class="buttons">
+    <a href="https://cloud.jazzdrive.com.pk/share/LKABYV2AX8BIKSL0" class="btn download-btn" id="downloadBtn">Download Movie</a>
+    <a href="https://cloud.jazzdrive.com.pk/share/LKABYV2AX8BIKSL0" class="btn watch-btn" target="_blank">Watch Online</a>
+</div>
+
+<a href="index.html" class="back-btn">Back to Home</a>
+</div>
+
+<script>
+// 3D tilt effect
+const container = document.querySelector('.container');
+document.addEventListener('mousemove', (e)=>{
+    let x = (window.innerWidth/2 - e.pageX)/25;
+    let y = (window.innerHeight/2 - e.pageY)/25;
+    container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+// Countdown inside button + change text
+const downloadBtn = document.getElementById('downloadBtn');
+const originalText = downloadBtn.innerText;
+
+downloadBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    let time = 5;
+    downloadBtn.disabled = true; // prevent multiple clicks
+
+    const interval = setInterval(()=>{
+        downloadBtn.innerText = `Wait ${time}...`;
+        time--;
+        if(time < 0){
+            clearInterval(interval);
+            downloadBtn.innerText = 'Click Here to Download';
+            downloadBtn.disabled = false; // re-enable
+            // Now user can click to actually download
+        }
+    }, 1000);
+});
+
+// Optional: actual download after second click
+downloadBtn.addEventListener('dblclick', ()=>{
+    window.open(downloadBtn.href, '_blank');
+});
+</script>
+
+</body>
+</html>
