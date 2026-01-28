@@ -3,115 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Series</title>
+<title>STRANGER THINGS S05 - 3D Series</title>
 
 <style>
-    body{
-        margin:0;
-        font-family: Arial, sans-serif;
-        background:#f2f2f2;
-    }
-    header{
-        background:#0d6efd;
-        color:#fff;
-        text-align:center;
-        padding:15px;
-        font-size:22px;
-        font-weight:bold;
-    }
-    .container{
-        max-width:700px;
-        margin:20px auto;
-        background:#fff;
-        padding:20px;
-        border-radius:10px;
-        box-shadow:0 0 10px rgba(0,0,0,0.1);
-    }
-    .series-name{
-        text-align:center;
-        font-size:24px;
-        font-weight:bold;
-        margin-bottom:20px;
-    }
-    .episode{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        padding:15px;
-        border-bottom:1px solid #ddd;
-    }
-    .episode:last-child{
-        border-bottom:none;
-    }
-    .episode span{
-        font-size:18px;
-        font-weight:500;
-    }
-    .download-btn{
-        text-decoration:none;
-        background:#28a745;
-        color:white;
-        padding:8px 16px;
-        border-radius:6px;
-        font-weight:bold;
-    }
-    .download-btn:hover{
-        background:#218838;
-    }
-    .back-btn{
-        display:block;
-        margin:25px auto 0;
-        width:fit-content;
-        text-decoration:none;
-        background:#007bff;
-        color:white;
-        padding:10px 20px;
-        border-radius:8px;
-        font-weight:bold;
-    }
-    .back-btn:hover{
-        background:#0056b3;
-    }
+/* BODY */
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background: radial-gradient(circle at top,#0a0a0a,#111);
+    color:white;
+}
+
+/* HEADER */
+header{
+    background: linear-gradient(135deg,#0d6efd,#00c6ff);
+    text-align:center;
+    padding:25px;
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:0 0 10px #00eaff;
+}
+
+/* CONTAINER */
+.container{
+    max-width:700px;
+    margin:30px auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* SERIES NAME */
+.series-name{
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+    text-shadow:0 0 8px #00c6ff;
+}
+
+/* EPISODE CARD */
+.episode{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius:20px;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.3s;
+    box-shadow:0 20px 50px rgba(0,0,0,0.7);
+}
+
+/* EPISODE HOVER EFFECT */
+.episode:hover{
+    box-shadow:0 30px 80px rgba(0,255,255,0.6);
+}
+
+/* EPISODE TEXT */
+.episode span{
+    font-size:18px;
+    font-weight:bold;
+    transform: translateZ(20px);
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn{
+    text-decoration:none;
+    background: linear-gradient(45deg,#00ff88,#00c6ff);
+    color:black;
+    padding:10px 20px;
+    border-radius:25px;
+    font-weight:bold;
+    transform: translateZ(20px);
+    transition: transform 0.2s;
+}
+.download-btn:hover{
+    transform: translateZ(25px) scale(1.05);
+    box-shadow:0 0 20px #00ff88,0 0 40px #00c6ff;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:block;
+    margin:30px auto 0;
+    width:fit-content;
+    text-decoration:none;
+    background: linear-gradient(45deg,#ff4c4c,#ff8c00);
+    color:black;
+    padding:12px 25px;
+    border-radius:25px;
+    font-weight:bold;
+    transition: transform 0.2s;
+}
+.back-btn:hover{
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:0 0 20px #ff4c4c,0 0 40px #ff8c00;
+}
 </style>
 </head>
 
 <body>
 
-<header>Web Series</header>
+<header>STRANGER THINGS SEASON 5</header>
 
 <div class="container">
 
-    <div class="series-name">
-        STRANGER THINGS SEASON 5
-    </div>
-
-    <!-- Episode 1 -->
     <div class="episode">
         <span>Episode 1</span>
         <a href="https://cloud.jazzdrive.com.pk/share/OAZFL5LR4DA77SWV" class="download-btn" download>Download Free on Jazz</a>
     </div>
 
-    <!-- Episode 2 -->
     <div class="episode">
         <span>Episode 2</span>
-        <a href="https://cloud.jazzdrive.com.pk/share/ZTHZJRXJZ8V7RDUU" class="download-btn" download>Download free on Jazz</a>
+        <a href="https://cloud.jazzdrive.com.pk/share/ZTHZJRXJZ8V7RDUU" class="download-btn" download>Download Free on Jazz</a>
     </div>
-      <!-- Episode 3 -->
+
     <div class="episode">
         <span>Episode 3</span>
         <a href="https://cloud.jazzdrive.com.pk/share/UFK7GS6GQ97NKHCE" class="download-btn" download>Download Free on Jazz</a>
     </div>
-      <!-- Episode 4 -->
+
     <div class="episode">
         <span>Episode 4</span>
-        <a href="https://cloud.jazzdrive.com.pk/share/WICF3N7Q67CR0ATN" class="download-btn" download>Download free on jazz</a>
+        <a href="https://cloud.jazzdrive.com.pk/share/WICF3N7Q67CR0ATN" class="download-btn" download>Download Free on Jazz</a>
     </div>
-
-    <!-- Add more episodes here -->
 
     <a href="index.html" class="back-btn">Back To Home</a>
 
 </div>
+
+<script>
+// 3D tilt effect for each episode
+document.querySelectorAll(".episode").forEach(card=>{
+    card.addEventListener("mousemove",e=>{
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width/2;
+        const y = e.clientY - rect.top - rect.height/2;
+        card.style.transform = `rotateY(${x/20}deg) rotateX(${-y/20}deg)`;
+    });
+    card.addEventListener("mouseleave", ()=>{
+        card.style.transform = "rotateY(0) rotateX(0)";
+    });
+});
+</script>
 
 </body>
 </html>
