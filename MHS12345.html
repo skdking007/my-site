@@ -1,1 +1,49 @@
-<h1 style="font-size: 200px;">Coming 🔜</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Coming Soon</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f0f0f;
+    perspective:1000px;
+}
+
+.coming-3d{
+    font-size:200px;
+    font-weight:900;
+    color:#fff;
+    text-transform:uppercase;
+    text-shadow:
+        0 1px 0 #ccc,
+        0 2px 0 #bbb,
+        0 3px 0 #aaa,
+        0 4px 0 #999,
+        0 10px 20px rgba(0,0,0,0.6);
+    animation: float3d 3s ease-in-out infinite;
+}
+
+@keyframes float3d{
+    0%{
+        transform: rotateX(0deg) rotateY(0deg) translateY(0);
+    }
+    50%{
+        transform: rotateX(15deg) rotateY(-15deg) translateY(-20px);
+    }
+    100%{
+        transform: rotateX(0deg) rotateY(0deg) translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+    <div class="coming-3d">Coming 🔜</div>
+</body>
+</html>
