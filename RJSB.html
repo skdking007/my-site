@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Raja saab Details - 3D Interactive</title>
+<title>The Raja Saab Details - 3D Interactive</title>
 <style>
 body {
     margin: 0;
@@ -13,7 +13,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
 }
+
 .container {
     width: 90%;
     max-width: 900px;
@@ -27,9 +29,11 @@ body {
     transform-style: preserve-3d;
     transition: transform 0.5s ease;
 }
+
 .container:hover {
     transform: rotateY(8deg) rotateX(4deg) scale(1.03);
 }
+
 header {
     font-size: 2.2rem;
     font-weight: 800;
@@ -38,6 +42,7 @@ header {
     color: #00ffe0;
     text-shadow: 0 0 20px #00ffe0, 0 0 40px #0ff;
 }
+
 .movie-img {
     width: 100%;
     max-height: 450px;
@@ -47,21 +52,25 @@ header {
     box-shadow: 0 15px 35px rgba(0,0,0,0.7);
     transition: transform 0.5s ease;
 }
+
 .movie-img:hover {
     transform: scale(1.05) rotateY(5deg);
 }
+
 h2 {
     font-size: 2rem;
     color: #00ffe0;
     margin-bottom: 10px;
     text-shadow: 0 0 10px #0ff;
 }
+
 p {
     font-size: 1rem;
     line-height: 1.7;
     color: #ddd;
     margin: 10px 0;
 }
+
 .buttons {
     display: flex;
     justify-content: center;
@@ -69,29 +78,29 @@ p {
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
 .btn {
     padding: 15px 25px;
     border-radius: 15px;
     font-weight: bold;
     text-decoration: none;
     color: #000;
-    background: linear-gradient(45deg,#00ffcc,#00aaff);
+    background: linear-gradient(45deg, #00ffcc, #00aaff);
     box-shadow: 0 10px 30px rgba(0,255,255,0.4);
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
 }
+
 .btn:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 20px 50px rgba(0,255,255,0.7);
 }
+
 .download-btn {
-    background: linear-gradient(45deg,#28ff7f,#20b04b);
+    background: linear-gradient(45deg, #28ff7f, #20b04b);
     color: #000;
 }
-.watch-btn {
-    background: linear-gradient(45deg,#ff4c4c,#e04343);
-    color: #000;
-}
+
 .back-btn {
     display: inline-block;
     margin-top: 30px;
@@ -100,69 +109,65 @@ p {
     font-weight: bold;
     color: #fff;
     text-decoration: none;
-    background: linear-gradient(45deg,#007bff,#0056b3);
+    background: linear-gradient(45deg, #007bff, #0056b3);
     box-shadow: 0 10px 30px rgba(0,123,255,0.6);
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .back-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 20px 50px rgba(0,123,255,0.7);
 }
+
 </style>
 </head>
 <body>
 
 <div class="container">
-<header>The Raja Saab 2026 Details</header>
+    <header>The Raja Saab 2026 Details</header>
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_lfi3F5s4O9cs20V3IkdZI-Rcdl-BohmYa20_fJUnQ&s=10" alt="Tron Ares" class="movie-img">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_lfi3F5s4O9cs20V3IkdZI-Rcdl-BohmYa20_fJUnQ&s=10" alt="The Raja Saab" class="movie-img">
 
-<h2> The Raja Saab</h2></h2>
-<p><strong>Story:</strong>A young heir embraces both his royal heritage and rebellious spirit as he rises to power, establishing unprecedented rules during his reign as Raja Saab.</p>
-<p><strong>Genre:</strong> horror comedy film</p>
-<p><strong>Release Date:</strong> 2026</p>
+    <h2>The Raja Saab</h2>
+    <p><strong>Story:</strong> A young heir embraces both his royal heritage and rebellious spirit as he rises to power, establishing unprecedented rules during his reign as Raja Saab.</p>
+    <p><strong>Genre:</strong> Horror Comedy Film</p>
+    <p><strong>Release Date:</strong> 2026</p>
 
-<div class="buttons">
-    <a href="https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W" class="btn download-btn" id="downloadBtn">Download Movie</a>
-    <a href="https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W" class="btn watch-btn" target="_blank">Watch Online</a>
-</div>
+    <div class="buttons">
+        <a href="https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W" class="btn download-btn" id="downloadBtn">Download Movie</a>
+    </div>
 
-<a href="index.html" class="back-btn">Back to Home</a>
+    <a href="index.html" class="back-btn">Back to Home</a>
 </div>
 
 <script>
-// 3D tilt effect
+// 3D tilt effect on container based on mouse movement
 const container = document.querySelector('.container');
-document.addEventListener('mousemove', (e)=>{
-    let x = (window.innerWidth/2 - e.pageX)/25;
-    let y = (window.innerHeight/2 - e.pageY)/25;
+document.addEventListener('mousemove', (e) => {
+    let x = (window.innerWidth / 2 - e.pageX) / 25;
+    let y = (window.innerHeight / 2 - e.pageY) / 25;
     container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 });
 
-// Countdown inside button + change text
+// Countdown for button + change text when clicked
 const downloadBtn = document.getElementById('downloadBtn');
 const originalText = downloadBtn.innerText;
 
-downloadBtn.addEventListener('click', (e)=>{
+downloadBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let time = 5;
     downloadBtn.disabled = true; // prevent multiple clicks
 
-    const interval = setInterval(()=>{
+    const interval = setInterval(() => {
         downloadBtn.innerText = `Wait ${time}...`;
         time--;
-        if(time < 0){
+        if (time < 0) {
             clearInterval(interval);
             downloadBtn.innerText = 'Click Here to Download';
             downloadBtn.disabled = false; // re-enable
-            // Now user can click to actually download
+            downloadBtn.href = "https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W"; // actual download link
         }
     }, 1000);
-});
-
-// Optional: actual download after second click
-downloadBtn.addEventListener('dblclick', ()=>{
-    window.open(downloadBtn.href, '_blank');
 });
 </script>
 
