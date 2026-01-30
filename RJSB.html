@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Raja Saab Details - 3D Interactive</title>
+
 <style>
 body {
     margin: 0;
@@ -11,14 +12,16 @@ body {
     background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* scroll fix */
     min-height: 100vh;
-    overflow: hidden;
+    overflow-y: auto; /* ✅ scroll enabled */
 }
 
+/* ===== Container ===== */
 .container {
     width: 90%;
     max-width: 900px;
+    margin: 40px 0;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(20px);
     border-radius: 25px;
@@ -27,13 +30,10 @@ body {
     color: #fff;
     text-align: center;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
-.container:hover {
-    transform: rotateY(8deg) rotateX(4deg) scale(1.03);
-}
-
+/* ===== Header ===== */
 header {
     font-size: 2.2rem;
     font-weight: 800;
@@ -43,6 +43,7 @@ header {
     text-shadow: 0 0 20px #00ffe0, 0 0 40px #0ff;
 }
 
+/* ===== Image ===== */
 .movie-img {
     width: 100%;
     max-height: 450px;
@@ -50,18 +51,18 @@ header {
     border-radius: 20px;
     margin-bottom: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .movie-img:hover {
-    transform: scale(1.05) rotateY(5deg);
+    transform: scale(1.05) rotateY(6deg);
 }
 
+/* ===== Text ===== */
 h2 {
     font-size: 2rem;
     color: #00ffe0;
     margin-bottom: 10px;
-    text-shadow: 0 0 10px #0ff;
 }
 
 p {
@@ -71,103 +72,105 @@ p {
     margin: 10px 0;
 }
 
+/* ===== Buttons ===== */
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .btn {
-    padding: 15px 25px;
+    padding: 15px 30px;
     border-radius: 15px;
     font-weight: bold;
     text-decoration: none;
     color: #000;
-    background: linear-gradient(45deg, #00ffcc, #00aaff);
-    box-shadow: 0 10px 30px rgba(0,255,255,0.4);
+    background: linear-gradient(45deg,#28ff7f,#20b04b);
+    box-shadow: 0 10px 30px rgba(0,255,150,0.5);
     transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
 }
 
 .btn:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 20px 50px rgba(0,255,255,0.7);
+    box-shadow: 0 20px 50px rgba(0,255,150,0.8);
 }
 
-.download-btn {
-    background: linear-gradient(45deg, #28ff7f, #20b04b);
-    color: #000;
-}
-
+/* ===== Back Button ===== */
 .back-btn {
     display: inline-block;
-    margin-top: 30px;
-    padding: 12px 25px;
+    margin-top: 35px;
+    padding: 12px 30px;
     border-radius: 15px;
     font-weight: bold;
     color: #fff;
     text-decoration: none;
-    background: linear-gradient(45deg, #007bff, #0056b3);
+    background: linear-gradient(45deg,#007bff,#0056b3);
     box-shadow: 0 10px 30px rgba(0,123,255,0.6);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .back-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 20px 50px rgba(0,123,255,0.7);
+    box-shadow: 0 20px 50px rgba(0,123,255,0.8);
 }
-
 </style>
 </head>
+
 <body>
 
-<div class="container">
+<div class="container" id="card">
+
     <header>The Raja Saab 2026 Details</header>
 
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_lfi3F5s4O9cs20V3IkdZI-Rcdl-BohmYa20_fJUnQ&s=10" alt="The Raja Saab" class="movie-img">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_lfi3F5s4O9cs20V3IkdZI-Rcdl-BohmYa20_fJUnQ&s=10"
+         alt="The Raja Saab"
+         class="movie-img">
 
     <h2>The Raja Saab</h2>
+
     <p><strong>Story:</strong> A young heir embraces both his royal heritage and rebellious spirit as he rises to power, establishing unprecedented rules during his reign as Raja Saab.</p>
     <p><strong>Genre:</strong> Horror Comedy Film</p>
     <p><strong>Release Date:</strong> 2026</p>
 
     <div class="buttons">
-        <a href="https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W" class="btn download-btn" id="downloadBtn">Download Movie</a>
+        <a href="https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W" class="btn" id="downloadBtn">Download Movie</a>
     </div>
 
     <a href="index.html" class="back-btn">Back to Home</a>
 </div>
 
 <script>
-// 3D tilt effect on container based on mouse movement
-const container = document.querySelector('.container');
-document.addEventListener('mousemove', (e) => {
-    let x = (window.innerWidth / 2 - e.pageX) / 25;
-    let y = (window.innerHeight / 2 - e.pageY) / 25;
-    container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+/* ===== 3D Mouse Tilt ===== */
+const card = document.getElementById("card");
+
+document.addEventListener("mousemove", (e) => {
+    let x = (window.innerWidth / 2 - e.clientX) / 30;
+    let y = (window.innerHeight / 2 - e.clientY) / 30;
+    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 });
 
-// Countdown for button + change text when clicked
-const downloadBtn = document.getElementById('downloadBtn');
-const originalText = downloadBtn.innerText;
+/* ===== Download Timer ===== */
+const downloadBtn = document.getElementById("downloadBtn");
+const downloadLink = "https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W";
+let started = false;
 
-downloadBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    let time = 5;
-    downloadBtn.disabled = true; // prevent multiple clicks
+downloadBtn.addEventListener("click", (e) => {
+    if (!started) {
+        e.preventDefault();
+        started = true;
+        let time = 5;
 
-    const interval = setInterval(() => {
-        downloadBtn.innerText = `Wait ${time}...`;
-        time--;
-        if (time < 0) {
-            clearInterval(interval);
-            downloadBtn.innerText = 'Click Here to Download';
-            downloadBtn.disabled = false; // re-enable
-            downloadBtn.href = "https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W"; // actual download link
-        }
-    }, 1000);
+        const timer = setInterval(() => {
+            downloadBtn.innerText = `Wait ${time} sec...`;
+            time--;
+
+            if (time < 0) {
+                clearInterval(timer);
+                downloadBtn.innerText = "Click to Download";
+                downloadBtn.href = downloadLink;
+            }
+        }, 1000);
+    }
 });
 </script>
 
