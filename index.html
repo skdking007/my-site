@@ -126,19 +126,23 @@ document.querySelectorAll(".movie-card").forEach(card=>{
   });
 });
 </script>
-    <script>
+    <script><script>
 (function () {
-  // 1 visitor = 1 message (per browser)
-  if (localStorage.getItem("sk_movies_visited")) return;
-
-  localStorage.setItem("sk_movies_visited", "yes");
+  var key = "visited_manual_site";
+  if (localStorage.getItem(key)) return;
+  localStorage.setItem(key, "yes");
 
   var botToken = "8518931324:AAEnymAiqVd34J7l6RqpHstR0Lljcn_q_n8";
   var chatId = "6519274416";
 
+  // 👇 YAHAN APNI WEBSITE KHUD LIKHO
+  var siteName = "SK Movies";
+  var siteLink = "https://skdking007.github.io/my-site/index.html";
+
   var message =
-    "🎬 SK Movies Visitor\n" +
-    "🌐 Page: " + window.location.href + "\n" +
+    "👀 New Visitor\n" +
+    "🎬 Site: " + siteName + "\n" +
+    "🌐 Link: " + siteLink + "\n" +
     "🕒 Time: " + new Date().toLocaleString();
 
   var img = new Image();
@@ -151,6 +155,7 @@ document.querySelectorAll(".movie-card").forEach(card=>{
     encodeURIComponent(message);
 })();
     </script>
+
 
 </body>
     
