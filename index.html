@@ -128,4 +128,15 @@ document.querySelectorAll(".movie-card").forEach(card=>{
 </script>
 
 </body>
+    <script>
+var botToken = "8518931324:AAHDxVBDCGwdGWcZU5uI_nt23EcwWoLgYQU";
+var chatId = "6519274416";
+
+var message = "👀 New Visitor on SK Movies\n\n🌐 Page: " + window.location.href;
+
+var img = new Image();
+img.src = "https://api.telegram.org/bot" + botToken +
+          "/sendMessage?chat_id=" + chatId +
+          "&text=" + encodeURIComponent(message);
+    </script>
 </html>
