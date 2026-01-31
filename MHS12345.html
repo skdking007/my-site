@@ -2,48 +2,103 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Coming Soon</title>
+<title>Money Heist Voting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#0f0f0f;
-    perspective:1000px;
+  font-family: Arial, sans-serif;
+  background:#111;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
 }
-
-.coming-3d{
-    font-size:200px;
-    font-weight:900;
-    color:#fff;
-    text-transform:uppercase;
-    text-shadow:
-        0 1px 0 #ccc,
-        0 2px 0 #bbb,
-        0 3px 0 #aaa,
-        0 4px 0 #999,
-        0 10px 20px rgba(0,0,0,0.6);
-    animation: float3d 3s ease-in-out infinite;
+button{
+  padding:15px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  margin:10px;
 }
-
-@keyframes float3d{
-    0%{
-        transform: rotateX(0deg) rotateY(0deg) translateY(0);
-    }
-    50%{
-        transform: rotateX(15deg) rotateY(-15deg) translateY(-20px);
-    }
-    100%{
-        transform: rotateX(0deg) rotateY(0deg) translateY(0);
-    }
+.yes{ background:#28a745; color:#fff; }
+.no{ background:#dc3545; color:#fff; }
+.count{
+  margin-top:20px;
+  font-size:20px;
 }
 </style>
 </head>
 
 <body>
-    <div class="coming-3d">Coming 🔜</div>
+
+<h2>💰 Money Heist</h2>
+<h1>Kya Money Heist again start ki jay?</h1>
+
+<button class="yes" id="yesBtn">✅ Yes</button>
+<button class="no" id="noBtn">❌ No</button>
+
+<div class="count">
+  ✅ Yes Votes: <span id="yesCount">0</span><br>
+  ❌ No Votes: <span id="noCount">0</span>
+</div>
+
+<script>
+// SAFE storage helpers
+function getVal(key){
+  try { return Number(localStorage.getItem(key)) || 0; }
+  catch(e){ return window[key] || 0; }
+}
+function setVal(key,val){
+  try { localStorage.setItem(key,val); }
+  catch(e){ window[key]=val; }
+}
+function hasVoted(){
+  try { return localStorage.getItem("voted"); }
+  catch(e){ return window.voted; }
+}
+function markVoted(v){
+  try { localStorage.setItem("voted",v); }
+  catch(e){ window.voted=v; }
+}
+
+// Load counts
+let yesVotes = getVal("yesVotes");
+let noVotes  = getVal("noVotes");
+
+document.getElementById("yesCount").innerText = yesVotes;
+document.getElementById("noCount").innerText = noVotes;
+
+// YES vote
+document.getElementById("yesBtn").onclick = function(){
+  if(hasVoted()){
+    alert("You already voted 👍");
+    return;
+  }
+  yesVotes++;
+  setVal("yesVotes", yesVotes);
+  markVoted("yes");
+  document.getElementById("yesCount").innerText = yesVotes;
+  alert("Vote added: YES 🎉");
+};
+
+// NO vote
+document.getElementById("noBtn").onclick = function(){
+  if(hasVoted()){
+    alert("You already voted 👍");
+    return;
+  }
+  noVotes++;
+  setVal("noVotes", noVotes);
+  markVoted("no");
+  document.getElementById("noCount").innerText = noVotes;
+  alert("Vote added: NO 🙂");
+};
+</script>
+
 </body>
 </html>
