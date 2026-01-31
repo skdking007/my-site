@@ -126,17 +126,33 @@ document.querySelectorAll(".movie-card").forEach(card=>{
   });
 });
 </script>
+    <script>
+(function () {
+  // 1 visitor = 1 message (per browser)
+  if (localStorage.getItem("sk_movies_visited")) return;
+
+  localStorage.setItem("sk_movies_visited", "yes");
+
+  var botToken = "8518931324:AAEnymAiqVd34J7l6RqpHstR0Lljcn_q_n8";
+  var chatId = "6519274416";
+
+  var message =
+    "🎬 SK Movies Visitor\n" +
+    "🌐 Page: " + window.location.href + "\n" +
+    "🕒 Time: " + new Date().toLocaleString();
+
+  var img = new Image();
+  img.src =
+    "https://api.telegram.org/bot" +
+    botToken +
+    "/sendMessage?chat_id=" +
+    chatId +
+    "&text=" +
+    encodeURIComponent(message);
+})();
+    </script>
 
 </body>
-    <script>
-var botToken = "8518931324:AAHDxVBDCGwdGWcZU5uI_nt23EcwWoLgYQU";
-var chatId = "6519274416";
+    
 
-var message = "👀 New Visitor on SK Movies\n\n🌐 Page: " + window.location.href;
-
-var img = new Image();
-img.src = "https://api.telegram.org/bot" + botToken +
-          "/sendMessage?chat_id=" + chatId +
-          "&text=" + encodeURIComponent(message);
-    </script>
 </html>
