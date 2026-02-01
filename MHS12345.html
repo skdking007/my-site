@@ -16,20 +16,27 @@ body{
   align-items:center;
   height:100vh;
   margin:0;
+  text-align:center;
 }
 button{
   padding:15px 25px;
   font-size:18px;
   border:none;
   border-radius:8px;
-  cursor:pointer;
   margin:10px;
+  opacity:0.7;
+  cursor:not-allowed;
 }
 .yes{ background:#28a745; color:#fff; }
 .no{ background:#dc3545; color:#fff; }
 .count{
   margin-top:20px;
   font-size:20px;
+}
+.note{
+  margin-top:15px;
+  font-size:14px;
+  opacity:0.7;
 }
 </style>
 </head>
@@ -39,66 +46,18 @@ button{
 <h2>💰 Money Heist</h2>
 <h1>Kya Money Heist again start ki jay?</h1>
 
-<button class="yes" id="yesBtn">✅ Yes</button>
-<button class="no" id="noBtn">❌ No</button>
+<button class="yes">✅ Yes</button>
+<button class="no">❌ No</button>
 
 <div class="count">
-  ✅ Yes Votes: <span id="yesCount">19</span><br>
-  ❌ No Votes: <span id="noCount">4</span>
+  ✅ Yes Votes: <b>29</b><br>
+  ❌ No Votes: <b>9</b><br><br>
+  🔢 Total Votes: <b>23</b>
 </div>
 
-<script>
-// SAFE storage helpers
-function getVal(key){
-  try { return Number(localStorage.getItem(key)) || 0; }
-  catch(e){ return window[key] || 0; }
-}
-function setVal(key,val){
-  try { localStorage.setItem(key,val); }
-  catch(e){ window[key]=val; }
-}
-function hasVoted(){
-  try { return localStorage.getItem("voted"); }
-  catch(e){ return window.voted; }
-}
-function markVoted(v){
-  try { localStorage.setItem("voted",v); }
-  catch(e){ window.voted=v; }
-}
-
-// Load counts
-let yesVotes = getVal("yesVotes");
-let noVotes  = getVal("noVotes");
-
-document.getElementById("yesCount").innerText = yesVotes;
-document.getElementById("noCount").innerText = noVotes;
-
-// YES vote
-document.getElementById("yesBtn").onclick = function(){
-  if(hasVoted()){
-    alert("You already voted 👍");
-    return;
-  }
-  yesVotes++;
-  setVal("yesVotes", yesVotes);
-  markVoted("yes");
-  document.getElementById("yesCount").innerText = yesVotes;
-  alert("Vote added: YES 🎉");
-};
-
-// NO vote
-document.getElementById("noBtn").onclick = function(){
-  if(hasVoted()){
-    alert("You already voted 👍");
-    return;
-  }
-  noVotes++;
-  setVal("noVotes", noVotes);
-  markVoted("no");
-  document.getElementById("noCount").innerText = noVotes;
-  alert("Vote added: NO 🙂");
-};
-</script>
+<div class="note">
+  Voting closed 
+</div>
 
 </body>
 </html>
