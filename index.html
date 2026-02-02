@@ -13,51 +13,7 @@ body{
     color:white;
 }
 
-/* ========== LOGIN OVERLAY ========== */
-#loginOverlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.9);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-}
-
-.login-box{
-    background:#111;
-    padding:25px;
-    width:300px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,198,255,0.6);
-}
-
-.login-box h2{
-    margin-bottom:15px;
-}
-
-.login-box input{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border:none;
-    border-radius:8px;
-    outline:none;
-}
-
-.login-box button{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    border:none;
-    border-radius:25px;
-    background:linear-gradient(45deg,#00ff88,#00c6ff);
-    font-weight:bold;
-    cursor:pointer;
-}
-/* ================================= */
-
+/* Header */
 header{
     background: linear-gradient(45deg,#0d6efd,#00c6ff);
     text-align:center;
@@ -66,6 +22,7 @@ header{
     font-weight:bold;
 }
 
+/* Grid */
 .movie-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -74,6 +31,7 @@ header{
     perspective:1200px;
 }
 
+/* Card */
 .movie-card{
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(12px);
@@ -85,10 +43,20 @@ header{
     box-shadow:0 30px 60px rgba(0,0,0,0.8);
 }
 
+.movie-card:hover{
+    box-shadow:0 40px 90px rgba(0,0,0,1);
+}
+
 .movie-card img{
     width:100%;
     height:300px;
     object-fit:cover;
+    transform:translateZ(50px);
+}
+
+.movie-card h3{
+    margin:12px 0;
+    transform:translateZ(40px);
 }
 
 .movie-card a{
@@ -100,21 +68,12 @@ header{
     border-radius:25px;
     text-decoration:none;
     font-weight:bold;
+    transform:translateZ(35px);
 }
 </style>
 </head>
 
 <body>
-
-<!-- LOGIN -->
-<div id="loginOverlay">
-  <div class="login-box">
-    <h2>🔐 Login</h2>
-    <input id="username" placeholder="Username">
-    <input id="password" type="password" placeholder="Password">
-    <button id="loginBtn">LOGIN</button>
-  </div>
-</div>
 
 <header>SK JAZZ DRIVE</header>
 
@@ -141,42 +100,22 @@ header{
 </div>
 
 <script>
-/* ===== LOGIN SYSTEM (REFRESH = LOGOUT) ===== */
-const USER = "admin";
-const PASS = "1234";
-const LIMIT = 8 * 60 * 60 * 1000; // 3 hours
+document.querySelectorAll(".movie-card").forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+    const r=card.getBoundingClientRect();
+    const x=e.clientX-r.left-r.width/2;
+    const y=e.clientY-r.top-r.height/2;
+    card.style.transform=`rotateY(${x/18}deg) rotateX(${-y/18}deg)`;
+  });
 
-let loginTime = null;
-
-const overlay = document.getElementById("loginOverlay");
-const btn = document.getElementById("loginBtn");
-
-btn.addEventListener("click", () => {
-    const u = document.getElementById("username").value;
-    const p = document.getElementById("password").value;
-
-    if(u === USER && p === PASS){
-        loginTime = Date.now();
-        overlay.style.display = "none";
-    } else {
-        alert("❌ Wrong username or password");
-    }
+  card.addEventListener("mouseleave",()=>{
+    card.style.transform="rotateY(0) rotateX(0)";
+  });
 });
-
-/* Page load → always show login */
-window.onload = () => {
-    overlay.style.display = "flex";
-};
-
-/* Auto logout after 3 hours (no refresh) */
-setInterval(() => {
-    if(loginTime && Date.now() - loginTime > LIMIT){
-        alert("⏰ 3 hours expired. Login again.");
-        loginTime = null;
-        overlay.style.display = "flex";
-    }
-}, 10000);
 </script>
 
+<!-- ✅ Ad Script -->
+<script src="https://pl28624314.effectivegatecpm.com/b9/e2/30/b9e230d6fba070c5e1885bf3d755e92c.js"></script>
+
 </body>
-    </html>
+</html>
