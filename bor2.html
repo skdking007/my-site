@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<tittle> Border2 Details - 3D Interactive</title>
+<title>Border 2 (2026) - Movie Details</title>
 
 <style>
 body {
@@ -12,9 +12,9 @@ body {
     background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* scroll fix */
+    align-items: flex-start;
     min-height: 100vh;
-    overflow-y: auto; /* ✅ scroll enabled */
+    overflow-y: auto;
 }
 
 /* ===== Container ===== */
@@ -59,7 +59,7 @@ header {
 }
 
 /* ===== Text ===== */
-h2 {
+h1 {
     font-size: 2rem;
     color: #00ffe0;
     margin-bottom: 10px;
@@ -95,6 +95,11 @@ p {
     box-shadow: 0 20px 50px rgba(0,255,150,0.8);
 }
 
+.btn.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
 /* ===== Back Button ===== */
 .back-btn {
     display: inline-block;
@@ -120,21 +125,20 @@ p {
 
 <div class="container" id="card">
 
-    <header>BORDER 2 2026 Details</header>
+    <header>BORDER 2 (2026)</header>
 
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMJZyANu2aP-W8FpmkX9irXu8FrNlpTzzoSEpPCO_Fow&s=10"
-         alt="BORDER 2"
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_lfi3F5s4O9cs20V3IkdZI-Rcdl-BohmYa20_fJUnQ&s=10"
+         alt="Border 2"
          class="movie-img">
 
-    <h1>BORDER 2</h1>
+    <h1>Border 2</h1>
 
-    <p><strong>Story:</strong> Young Indian fighters are prepared to protect their homeland from a greater threat during the 1971 Indo-Pak war.
-</p>
-    <p><strong>Genre:</strong> war, action, drama</p>
+    <p><strong>Story:</strong> Young Indian fighters prepare to defend their homeland during the 1971 Indo-Pak war.</p>
+    <p><strong>Genre:</strong> War, Action, Drama</p>
     <p><strong>Release Date:</strong> 2026</p>
 
     <div class="buttons">
-        <a href="https://cloud.jazzdrive.com.pk/share/37JTXMT4FPP5ZJWH" class="btn" id="downloadBtn">Download Movie</a>
+        <a href="#" class="btn" id="downloadBtn">Download Movie</a>
     </div>
 
     <a href="index.html" class="back-btn">Back to Home</a>
@@ -150,27 +154,45 @@ document.addEventListener("mousemove", (e) => {
     card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 });
 
-/* ===== Download Timer ===== */
+/* ===== Download Timer (2 Click System) ===== */
 const downloadBtn = document.getElementById("downloadBtn");
 const downloadLink = "https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W";
-let started = false;
 
-downloadBtn.addEventListener("click", (e) => {
-    if (!started) {
+let countdownStarted = false;
+let readyToDownload = false;
+
+downloadBtn.addEventListener("click", function (e) {
+
+    // First click → start 15 sec timer
+    if (!countdownStarted) {
         e.preventDefault();
-        started = true;
+        countdownStarted = true;
+
         let time = 15;
+        downloadBtn.innerText = `Wait ${time} sec...`;
+        downloadBtn.classList.add("disabled");
 
         const timer = setInterval(() => {
-            downloadBtn.innerText = `Wait ${time} sec...`;
             time--;
+            downloadBtn.innerText = `Wait ${time} sec...`;
 
-            if (time < 0) {
+            if (time <= 0) {
                 clearInterval(timer);
                 downloadBtn.innerText = "Click to Download";
-                downloadBtn.href = downloadLink;
+                downloadBtn.classList.remove("disabled");
+                readyToDownload = true;
             }
         }, 1000);
+    }
+
+    // Second click → download starts
+    else if (readyToDownload) {
+        downloadBtn.href = downloadLink;
+    }
+
+    // While counting → block clicks
+    else {
+        e.preventDefault();
     }
 });
 </script>
