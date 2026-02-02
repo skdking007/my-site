@@ -39,7 +39,7 @@ header{
     overflow:hidden;
     text-align:center;
     transform-style:preserve-3d;
-    transition:box-shadow 0.3s;
+    transition:box-shadow 0.3s, transform 0.2s;
     box-shadow:0 30px 60px rgba(0,0,0,0.8);
 }
 
@@ -47,6 +47,7 @@ header{
     box-shadow:0 40px 90px rgba(0,0,0,1);
 }
 
+/* Image */
 .movie-card img{
     width:100%;
     height:300px;
@@ -70,12 +71,23 @@ header{
     font-weight:bold;
     transform:translateZ(35px);
 }
+
+/* Ads */
+.ad-box{
+    text-align:center;
+    margin:25px auto;
+}
 </style>
 </head>
 
 <body>
 
 <header>SK JAZZ DRIVE</header>
+
+<!-- 🔥 AD #1 -->
+<div class="ad-box">
+<script src="https://pl28624314.effectivegatecpm.com/b9/e2/30/b9e230d6fba070c5e1885bf3d755e92c.js"></script>
+</div>
 
 <div class="movie-grid">
 
@@ -99,23 +111,30 @@ header{
 
 </div>
 
+<!-- 🔥 AD #2 -->
+<div class="ad-box">
+<script src="https://pl28624314.effectivegatecpm.com/b9/e2/30/b9e230d6fba070c5e1885bf3d755e92c.js"></script>
+</div>
+
+<!-- 🔥 AD #3 (NEW) -->
+<div class="ad-box">
+<script src="https://pl28624312.effectivegatecpm.com/24/b5/99/24b5991021c74df2e0d8caf61a761abf.js"></script>
+</div>
+
 <script>
 document.querySelectorAll(".movie-card").forEach(card=>{
   card.addEventListener("mousemove",e=>{
     const r=card.getBoundingClientRect();
     const x=e.clientX-r.left-r.width/2;
     const y=e.clientY-r.top-r.height/2;
-    card.style.transform=`rotateY(${x/18}deg) rotateX(${-y/18}deg)`;
+    card.style.transform=
+      `rotateY(${x/18}deg) rotateX(${-y/18}deg)`;
   });
-
   card.addEventListener("mouseleave",()=>{
     card.style.transform="rotateY(0) rotateX(0)";
   });
 });
 </script>
-
-<!-- ✅ Ad Script -->
-<script src="https://pl28624314.effectivegatecpm.com/b9/e2/30/b9e230d6fba070c5e1885bf3d755e92c.js"></script>
 
 </body>
 </html>
