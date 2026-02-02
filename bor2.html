@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<tittle> Border2 Details - 3D Interactive</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* scroll fix */
+    min-height: 100vh;
+    overflow-y: auto; /* ✅ scroll enabled */
+}
+
+/* ===== Container ===== */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px 0;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    padding: 25px;
+    color: #fff;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+/* ===== Header ===== */
+header {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #00ffe0;
+    text-shadow: 0 0 20px #00ffe0, 0 0 40px #0ff;
+}
+
+/* ===== Image ===== */
+.movie-img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    transition: transform 0.4s ease;
+}
+
+.movie-img:hover {
+    transform: scale(1.05) rotateY(6deg);
+}
+
+/* ===== Text ===== */
+h2 {
+    font-size: 2rem;
+    color: #00ffe0;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ddd;
+    margin: 10px 0;
+}
+
+/* ===== Buttons ===== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    background: linear-gradient(45deg,#28ff7f,#20b04b);
+    box-shadow: 0 10px 30px rgba(0,255,150,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(0,255,150,0.8);
+}
+
+/* ===== Back Button ===== */
+.back-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 30px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(45deg,#007bff,#0056b3);
+    box-shadow: 0 10px 30px rgba(0,123,255,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(0,123,255,0.8);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="card">
+
+    <header>BORDER 2 2026 Details</header>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_lfi3F5s4O9cs20V3IkdZI-Rcdl-BohmYa20_fJUnQ&s=10"
+         alt="BORDER 2"
+         class="movie-img">
+
+    <h1>BORDER 2</h1>
+
+    <p><strong>Story:</strong> Young Indian fighters are prepared to protect their homeland from a greater threat during the 1971 Indo-Pak war.
+</p>
+    <p><strong>Genre:</strong> war, action, drama</p>
+    <p><strong>Release Date:</strong> 2026</p>
+
+    <div class="buttons">
+        <a href="https://cloud.jazzdrive.com.pk/share/37JTXMT4FPP5ZJWH" class="btn" id="downloadBtn">Download Movie</a>
+    </div>
+
+    <a href="index.html" class="back-btn">Back to Home</a>
+</div>
+
+<script>
+/* ===== 3D Mouse Tilt ===== */
+const card = document.getElementById("card");
+
+document.addEventListener("mousemove", (e) => {
+    let x = (window.innerWidth / 2 - e.clientX) / 30;
+    let y = (window.innerHeight / 2 - e.clientY) / 30;
+    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+/* ===== Download Timer ===== */
+const downloadBtn = document.getElementById("downloadBtn");
+const downloadLink = "https://cloud.jazzdrive.com.pk/share/PELVZWRBKXSU1Q8W";
+let started = false;
+
+downloadBtn.addEventListener("click", (e) => {
+    if (!started) {
+        e.preventDefault();
+        started = true;
+        let time = 15;
+
+        const timer = setInterval(() => {
+            downloadBtn.innerText = `Wait ${time} sec...`;
+            time--;
+
+            if (time < 0) {
+                clearInterval(timer);
+                downloadBtn.innerText = "Click to Download";
+                downloadBtn.href = downloadLink;
+            }
+        }, 1000);
+    }
+});
+</script>
+
+</body>
+</html>
